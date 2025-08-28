@@ -1,0 +1,371 @@
+/* ==========================================================================
+   CSS Variables Reference
+   ==========================================================================
+   📌 Font 관련
+   --default-font-family
+   --base-body-font-size
+   --base-font-size
+   --fs-body-base
+   --fs-title-base
+   --fs-primary-title
+   --fs-title
+   --fs-subtitle
+   --fs-section-title
+   --fs-section-subtitle
+   --fs-body
+   --fs-copyright
+
+   📌 Width 관련
+   --logo-width
+   --default-container-width
+   --default-content-width
+   --default-container-width-small
+   --default-content-width-small
+
+   --max-container-width
+   --max-content-width
+   --max-container-width-small
+   --max-content-width-small
+
+   📌 Spacing 관련
+   --default-container-padding
+   --default-logo-margin
+   --default-navbar-padding
+
+   📌 Media Query에서 변경되는 변수
+   - (1025px~1280px)
+     --max-container-width
+     --max-content-width
+     --max-container-width-small
+     --max-content-width-small
+
+   - (769px~1024px)
+     --max-container-width
+     --max-content-width
+     --max-container-width-small
+     --max-content-width-small
+
+   - (최대 768px)
+     --fs-body-base
+     --fs-title-base
+     --max-container-width
+     --max-content-width
+     --max-container-width-small
+     --max-content-width-small
+================================================================== */
+
+
+/* imweb 헤더의 높이를 계산에서 제외하기 위한 CSS 변수 설정 */
+#doz_header_wrap {
+  position: absolute;
+  width: 100%;
+}
+
+
+/* ----------------------------------------------
+ * init default style
+ * ---------------------------------------------- */
+.canvas-wrapper {
+  min-height: calc(var(--lvh) * 200);
+  background: #f5f5f7;
+}
+
+.canvas-container {
+  position: sticky;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: calc(var(--lvh) * 100);
+  overflow: hidden;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  object-position: 60% top;
+}
+
+svg#center-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: fit-content;
+  height: fit-content;
+  z-index: 10;
+  pointer-events: none;
+  width: 100%;
+  overflow: visible;
+  transform: translateX(-50%) translateY(-50%) translateZ(0) scale(var(--center-svg-scale));
+  opacity: 0.25;
+}
+
+svg text {
+  font-size: 100lvw;
+  font-weight: 700;
+  fill: white;
+}
+
+#visual-section {
+    --fs-hero-scroll-title: var(--fs-primary-title);
+    --fs-visual-scroll-title: var(--fs-primary-title);
+
+    --default-margin: 8rem;
+    margin-top:0;
+    padding-top: 0;
+    background: #f5f5f7;
+    --brightness-min: 0.33;
+    --brightness-max: 1;
+    --brightness-interpolated: calc( 1 - (var(--brightness-min) + var(--rect-scroll-inverted-progress) * (var(--brightness-max) - var(--brightness-min))) );
+    background: rgba(
+        max(0, calc(245 - var(--brightness-interpolated) * 255 * 1.5)),
+        max(0, calc(245 - var(--brightness-interpolated) * 255 * 1.5)), 
+        max(0, calc(247 - var(--brightness-interpolated) * 255 * 1.5)), 
+        1
+    );
+    .content-wrapper-wide {
+        width: 100dvw;
+        position: relative;
+    }
+    .content-wrapper {
+        width: var(--default-container-width);
+        max-width: var(--max-container-width);
+        margin: 0 auto;
+        padding: 0 calc(var(--default-container-padding) / 2);
+    }
+    
+    .content {
+        flex: 0 0 100dvw; /* 하나의 화면을 꽉 채우도록 */
+        box-sizing: border-box;
+        padding: 4rem;
+        position: relative;
+        margin:0 auto;
+        display:grid;
+        grid-template-columns:repeat(12, 1fr);
+        max-width: var(--max-content-width);
+        max-height: 100%;
+        .content-text {
+            z-index: 2;
+            user-select: none;
+            grid-column: 1 / 9;
+            grid-row: 6 / auto;
+		    will-change: transform;
+            transform: translateZ(0);
+            p {
+                word-break: keep-all;
+                color:#b6b6b9;
+                text-shadow: 
+                    0 0 21px rgba(0, 0, 0, 1), 
+                    0 0 34px rgba(0, 0, 0, 1), 
+                    0 0 55px rgba(0, 0, 0, 1),
+            }
+            strong {
+                color: white;
+                font-weight: 700;
+            }
+        }
+        .content-image { 
+            overflow: hidden;
+            border-radius: var(--fs-subtitle);
+            visibility: visible;
+            content-visibility: visible;
+            z-index: 1;
+            padding: 1px;
+		    will-change: transform;
+            transform: translateZ(0);
+            user-select: none;
+            grid-column: 5 / 13;
+            grid-row: 4 / 12;
+            max-height: calc(var(--lvh) * 75);
+            img {
+                overflow: visible;
+                visibility: visible;
+                content-visibility: visible;
+                will-change: transform;
+                transform: translateZ(0);
+                object-fit:cover;
+                object-position: top left;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .content-title {
+            z-index: 3; 
+		    will-change: transform;
+            transform: translateZ(0);
+            grid-column: 1 / 13;
+            grid-row: 1 / 4;
+            user-select: none;
+                h2 {
+                    text-align: left;
+                    color:white;
+                    font-size: var(--fs-hero-scroll-title);
+                    padding-bottom: calc(var(--fs-hero-scroll-title) / 2);
+                }
+        }
+    }
+    .content.second {
+        .content-title {
+		  
+        }
+        .content-text {
+		  
+            grid-column: 6 / 13;
+            grid-row: 5 / auto;
+        }        
+        .content-image {
+            grid-column: 1 / 9;
+            grid-row: 4 / 12;
+        }        
+    }
+
+    .title {
+        height:fit-content;
+        position: absolute;
+        inset:0;
+        top:50%;
+        h2 {
+            transition: 0.3s transform cubic-bezier(0.3, 0.1, 0, 1);
+            color:#FFF;
+        }
+        h2 {
+            width: 100%;
+            justify-content: center;
+            align-content: flex-end;
+            font-size: var(--fs-hero-scroll-title); 
+            line-height: 1;
+            display: flex;
+            align-items: end;
+        }
+        h3 {
+            font-size: var(--fs-visual-scroll-title);
+            padding-top: calc(var(--fs-visual-scroll-title) / 2 );
+        }
+    }
+
+    #multi-scroll {
+
+    }
+    .multi-scroll-item {
+        width: 100dvw;
+        min-width: 100dvw;
+        height: calc(var(--lvh) * 100);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .horizontal-spacer {
+        height: calc(var(--lvh) * 300);
+    }
+    .horizontal-container {
+        position: sticky;
+        top:0;
+        display: flex;
+        flex-wrap:nowrap;
+    }
+}
+ 
+
+
+#horizontal-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.horizontal-content {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    height: calc(var(--lvh) * 100);
+}
+
+.sticky-element {
+    position: sticky;
+    top:0;
+    padding: 0;
+    height: 100%;
+}
+
+.sticky-element-background {
+    position: absolute;
+    background-color:#FFF;
+    height: 100%;
+    width: 100%;
+    top:0;
+    left:50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    background-position: bottom;
+    background-size: cover;
+    filter: brightness(var(--rect-scroll-brightness));
+}
+
+.sticky-element-content {
+    .content {
+        display: flex;
+        min-height: calc(var(--lvh) * 100);
+    }
+
+}
+
+
+@media (max-width: 1280px) and (min-width: 1025px) {
+    /* 1025 ~ 1280 */
+    #visual-section {
+
+        .content {
+            padding: 3rem;
+        }
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  /* 769 ~ 1024 */
+    #visual-section {
+        --fs-hero-scroll-title: clamp(2.5rem, max(calc(var(--lvh) * 5), 5dvw), 3rem);
+        --fs-visual-scroll-title: clamp(1.125rem, max(calc(var(--lvh) * 3), 3dvw), 1.25rem);
+        .content {
+            padding: 2rem;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    #visual-section {
+        --fs-hero-scroll-title: clamp(2rem, max(calc(var(--lvh) * 5), 5dvw), 2.5rem);
+        --fs-visual-scroll-title: clamp(1rem, max(calc(var(--lvh) * 3), 3dvw), 1.125rem);
+
+        .content {
+            padding: 0;
+            .content-title {
+            
+            }
+            .content-text {
+            grid-column: 1 / 11;
+            grid-row: 5 / auto;
+
+            }        
+            .content-image {
+            grid-column: 3 / 13;
+            }    
+        }
+
+        .content.second {
+            .content-title {
+            
+            }
+            .content-text {
+                grid-column: 3 / 13;
+                grid-row: 5 / auto;
+            }        
+            .content-image {
+                grid-column: 1 / 11;
+            }        
+        }
+
+    }
+  /* 최대 768 */
+}
+

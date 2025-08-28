@@ -1,0 +1,131 @@
+/* ==========================================================================
+   CSS Variables Reference
+   ==========================================================================
+   📌 Font 관련
+   --default-font-family
+   --base-body-font-size
+   --base-font-size
+   --fs-body-base
+   --fs-title-base
+   --fs-primary-title
+   --fs-title
+   --fs-subtitle
+   --fs-section-title
+   --fs-section-subtitle
+   --fs-body
+   --fs-copyright
+
+   📌 Width 관련
+   --logo-width
+   --default-container-width
+   --default-content-width
+   --default-container-width-small
+   --default-content-width-small
+
+   --max-container-width
+   --max-content-width
+   --max-container-width-small
+   --max-content-width-small
+
+   📌 Spacing 관련
+   --default-container-padding
+   --default-logo-margin
+   --default-navbar-padding
+
+   📌 Media Query에서 변경되는 변수
+   - (1025px~1280px)
+     --max-container-width
+     --max-content-width
+     --max-container-width-small
+     --max-content-width-small
+
+   - (769px~1024px)
+     --max-container-width
+     --max-content-width
+     --max-container-width-small
+     --max-content-width-small
+
+   - (최대 768px)
+     --fs-body-base
+     --fs-title-base
+     --max-container-width
+     --max-content-width
+     --max-container-width-small
+     --max-content-width-small
+   ================================================================== */
+
+:root {
+	--slide-container-width: 100%;
+	--flow-scroll-items-per-view: 5; 
+	--flow-scroll-padding: 1rem;
+	--flow-scroll-slide-width: calc(var(--slide-container-width) / var(--flow-scroll-items-per-view));
+}
+#slide-container {
+	overflow: hidden;
+	cursor: -webkit-grab;
+	cursor: grab;
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	height: var(--flow-scroll-slide-width);
+	margin-top: var(--fs-subtitle);
+}
+#slide-container.is-dragging {
+	cursor: -webkit-grabbing;
+	cursor: grabbing;
+}
+.slide-wrapper {
+	counter-reset: count;
+	display: flex;
+	position: absolute;
+	z-index: 1;
+	height: 100%;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+.slide {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: var(--flow-scroll-slide-width);
+	height: 100%;
+	overflow: hidden;
+	padding: 0 var(--flow-scroll-padding);
+}
+.slide figure {
+	margin: 0;
+	z-index: 1;
+	display: block;
+	user-select: none;
+	appearance: none;
+	border: none;
+	outline: none;
+	box-shadow: none;
+	cursor: pointer;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1 / 1;
+	overflow: hidden;
+	transform-origin: center;
+	border-radius: 0.75rem;
+}
+.slide figure a {
+	aspect-ratio: 1 / 1;
+	display: flex;
+	width: fit-content;
+	height: fit-content;
+	object-fit: cover;
+}
+.slide figure img {
+	will-change: transform;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	vertical-align: middle;
+	transform-origin: center;
+}

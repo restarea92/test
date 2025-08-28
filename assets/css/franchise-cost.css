@@ -1,0 +1,315 @@
+/* ==========================================================================
+   CSS Variables Reference
+   ==========================================================================
+   📌 Font 관련
+   --default-font-family
+   --base-body-font-size
+   --base-font-size
+   --fs-body-base
+   --fs-title-base
+   --fs-primary-title
+   --fs-title
+   --fs-subtitle
+   --fs-body
+   --fs-copyright
+
+   📌 Width 관련
+   --logo-width
+   --default-container-width
+   --default-content-width
+   --default-container-width-small
+   --default-content-width-small
+
+   --max-container-width
+   --max-content-width
+   --max-container-width-small
+   --max-content-width-small
+
+   📌 Spacing 관련
+   --default-container-padding
+   --default-logo-margin
+   --default-navbar-padding
+
+   📌 Media Query에서 변경되는 변수
+   - (1025px~1280px)
+     --max-container-width
+     --max-content-width
+     --max-container-width-small
+     --max-content-width-small
+
+   - (769px~1024px)
+     --max-container-width
+     --max-content-width
+     --max-container-width-small
+     --max-content-width-small
+
+   - (최대 768px)
+     --fs-body-base
+     --fs-title-base
+     --max-container-width
+     --max-content-width
+     --max-container-width-small
+     --max-content-width-small
+================================================================== */
+
+:root {
+	--gradient-primary: linear-gradient(45deg, #667eea, #764ba2);
+	--shadow-hover: 0 20px 40px rgba(102, 126, 234, 0.3);
+	--border-glass: 1px solid rgba(255, 255, 255, 0.1);
+	--bg-glass: rgba(255, 255, 255, 0.05);
+	--backdrop-blur: blur(20px);
+	--transition-smooth: all 0.3s ease;
+	--title-overlay-scale: 2;
+}
+
+
+
+.franchise.common-container {
+	background: #f5f5f7;
+	
+	.process-list {
+		max-width: var(--default-container-width);
+		margin: 3rem auto 0;
+		counter-reset: step-counter;
+		
+		.process-item {
+			position: relative;
+			background: white;
+			margin-bottom: 2rem;
+			padding: 2rem;
+			border-radius: 16px;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+			border: 1px solid rgba(0, 0, 0, 0.05);
+			counter-increment: step-counter;
+			transition: var(--transition-smooth);
+			
+			&:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+			}
+			
+			&::before {
+				content: counter(step-counter);
+				position: absolute;
+				top: calc(var(--fs-title) / 2);
+				left: 2rem;
+				width: var(--fs-title);
+				height: var(--fs-title);
+				background: #1d1d1f;
+				color: white;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: 800;
+				font-size: var(--fs-body);
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+			}
+			
+			.step-title {
+				text-align: left;
+				font-size: var(--fs-subtitle);
+				font-weight: 700;
+				color: #1d1d1f;
+				margin: var(--fs-title) 0 0.5rem 0;
+				padding-top: 0.5rem;
+			}
+			
+			.step-description {
+				color: #6e6e73;
+				font-size: var(--fs-body);
+				line-height: 1.6;
+				margin: 0;
+				padding-left: 1rem;
+				border-left: 3px solid #f5f5f7;
+			}
+		}
+	}
+}
+
+.cost.common-container {
+	background: white;
+	color: #1d1d1f;
+	
+	.cost-overview {
+		text-align: center;
+		margin-bottom: 4rem;
+		
+		.cost-title {
+			font-size: var(--fs-title);
+			font-weight: 800;
+			margin-bottom: 1rem;
+			color: #1d1d1f;
+		}
+		
+		.cost-subtitle {
+			font-weight: 700;
+			font-size: var(--fs-subtitle);
+			color: #6e6e73;
+			margin-bottom: 2rem;
+		}
+		
+		.cost-highlight {
+			background: #f5f5f7;
+			padding: 1.5rem;
+			border-radius: 12px;
+			border: 1px solid rgba(0, 0, 0, 0.05);
+			
+			.highlight-text {
+				font-size: var(--fs-subtitle);
+				font-weight: 700;
+				margin-bottom: 0.5rem;
+				color: #1d1d1f;
+			}
+			
+			.highlight-desc {
+				color: #6e6e73;
+			}
+		}
+	}
+	
+	.cost-breakdown {
+		max-width: var(--default-container-width);
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		
+		.cost-card {
+			background: white;
+			padding: 2rem;
+			border-radius: 16px;
+			border: 1px solid rgba(0, 0, 0, 0.08);
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+			transition: var(--transition-smooth);
+			
+			&:hover {
+				transform: translateY(-8px);
+				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+			}
+			
+			.card-title {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				font-size: var(--fs-subtitle);
+				font-weight: 700;
+				margin-bottom: 1rem;
+				color: #1d1d1f;
+			}
+			
+			.cost-item {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				margin-bottom: 0.8rem;
+				padding-bottom: 0.8rem;
+				border-bottom: 1px solid #f5f5f7;
+				gap:1rem;
+				&:last-child {
+					border-bottom: none;
+					margin-bottom: 0;
+				}
+				
+				.item-name {
+					min-width: 40%;
+					color: #6e6e73;
+					word-break: keep-all;
+					white-space: nowrap;
+				}
+				
+				.item-price {
+					font-weight: 700;
+					color: #1d1d1f;
+					&.free {
+						color: #34c759;
+						font-weight: 700;
+					}
+					s {
+						color: #ddd;
+						text-decoration: none;
+						position: relative;
+						&::after {
+							content: " ";
+							position: absolute;
+							width: calc(100% + 0.25rem);
+							border-top:1px solid #666;
+							left: -0.125rem;
+							top: 50%;
+							transform: translateY(-50%);
+						}
+					}
+				}
+			}
+			
+			&.total-card {
+				background: #f5f5f7;
+				border: 2px solid rgba(0, 0, 0, 0.1);
+
+				
+				.total-range {
+					text-align: center;
+					font-size: var(--fs-copyright);
+					color:#34c759;
+					font-weight: 800;
+					margin: 1rem 0;
+					word-break: keep-all;
+				}
+				
+				.total-note {
+					text-align: center;
+					color: #6e6e73;
+					font-size: calc(var(--fs-body) * 0.75);
+				}
+			}
+		}
+	}
+	
+	.cost-advantages {
+		margin-top: 4rem;
+		padding-top: 4rem;
+		text-align: center;
+		
+		.advantages-title {
+			font-size: var(--fs-title);
+			font-weight: 700;
+			margin-bottom: 2rem;
+			color: #1d1d1f;
+		}
+		
+		.advantages-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 1.5rem;
+			max-width: var(--default-container-width);
+			margin: 0 auto;
+			
+			.advantage-item {
+				background: #f5f5f7;
+				padding: 1.5rem;
+				border-radius: 12px;
+				border: 1px solid rgba(0, 0, 0, 0.05);
+				
+				.advantage-icon {
+					.material-symbols-outlined {
+						font-size: var(--fs-subtitle);
+					}
+					margin-bottom: 0.5rem;
+				}
+				
+				.advantage-title {
+					font-size: var(--fs-copyright);
+					font-weight: 700;
+					margin-bottom: 0.5rem;
+					color: #1d1d1f;
+				}
+				
+				.advantage-desc {
+					color: #6e6e73;
+					font-size: var(--fs-body);
+					line-height: 1.5;
+				}
+			}
+		}
+	}
+}

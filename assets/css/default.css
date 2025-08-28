@@ -1,0 +1,157 @@
+:root {
+    /* default font */
+    --default-font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    
+    /* Init base font sizes */
+    --base-body-font-size: 17px;
+    --base-font-size: 1rem;
+
+    --fs-body-base: calc(var(--base-font-size) * 1.25);
+    --fs-title-base: calc(var(--base-font-size) * 2);
+
+    /* Title */
+    --fs-primary-title: calc(var(--fs-title-base) * 2);
+    --fs-title: calc(var(--fs-title-base) * 1.5);
+    --fs-subtitle: calc(var(--fs-title) * 0.625);
+
+    --fs-section-title: calc(var(--fs-title-base) * 3 / 4);
+    --fs-section-subtitle: calc(var(--fs-section-title) * 0.625);
+
+    /* Body */
+    --fs-body: calc(var(--fs-body-base));
+    --fs-copyright: calc(var(--fs-body-base) * 1.125);
+
+    /* init widths */
+    --logo-width: 100px;
+    --default-container-width: 100%;
+    --default-content-width: 100%;
+    --default-container-width-small: 100%;
+    --default-content-width-small: 100%;
+
+    --max-container-width: 1280px;
+    --max-content-width: 1152px;
+    --max-container-width-small: 1024px;
+    --max-content-width-small: 960px;
+
+    --default-container-padding: calc(var(--max-container-width) - var(--max-content-width));
+    --default-logo-margin: 20px;
+    --default-navbar-padding: 12px;
+
+    --lvh: 1lvh;
+}
+
+
+
+
+@media (max-width: 1280px) and (min-width: 1025px) {
+    /* 1025 ~ 1280 */
+    :root {      
+        
+        --fs-body-base: calc(var(--base-font-size) * 1.125);
+        --fs-title-base: calc(var(--base-font-size) * 1.875);
+
+        --max-container-width: 1024px;
+        --max-content-width: 960px;
+        --max-container-width-small: var(--max-container-width);
+        --max-content-width-small: var(--max-content-width);
+    }
+}
+
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    /* 769 ~ 1024 */
+    :root {
+        --fs-body-base: calc(var(--base-font-size) * 1.125);
+        --fs-title-base: calc(var(--base-font-size) * 1.75);
+
+        --max-container-width: calc(100lvw - 4rem);
+        --max-content-width: calc(var(--max-container-width) - 4rem);
+        --max-container-width-small: 736px;
+        --max-content-width-small: 680px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --fs-body-base: calc(var(--base-font-size) * 1.125);
+        --fs-title-base: calc(var(--base-font-size) * 1.5);
+        
+        --fs-copyright: calc(var(--fs-body-base) * 1.25);
+
+        --max-container-width: calc(100lvw - 2rem);
+        --max-content-width: calc(var(--max-container-width) - 2rem);
+        --max-container-width-small: var(--max-container-width);
+        --max-content-width-small: var(--max-content-width);
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --fs-body-base: calc(var(--base-font-size) * 1);
+        --fs-title-base: calc(var(--base-font-size) * 1.25);
+        
+        --fs-copyright: calc(var(--fs-body-base) * 1.125);
+    }
+}
+
+ /* Override Common Container Style - 공통 컨테이너 스타일 */
+.common-container {
+	position: relative;
+	z-index: 1;
+	--common-text-color: #333;
+	color: var(--common-text-color);
+	padding: var(--fs-primary-title) 0;
+	h1, h2, h3, h4, h5 {
+		margin: 0;
+        word-break: keep-all;
+	}
+	
+	.content-wrapper {
+		display: block;
+        width: var(--default-container-width);
+		max-width: var(--max-container-width);
+        padding: 0 calc(var(--default-container-padding) / 2);
+		margin: 0 auto;
+	}
+	.content {
+		background:unset;
+		display: block;
+	}
+	.content-title {
+		font-size: var(--fs-title);
+		font-weight: 800;
+		text-align: center;
+		margin-bottom: var(--fs-title);
+		color: var(--common-text-color);
+		position: relative;
+	}
+	
+	h3 {
+		font-size: var(--fs-subtitle);
+		font-weight: 700;
+		text-align: center;
+		color: var(--common-text-color);
+	}
+}
+
+
+
+/* Animations */
+@keyframes shimmer {
+	0% { transform: translateX(-100%); }
+	100% { transform: translateX(100%); }
+}
+
+.fade-in {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: var(--transition-smooth);
+
+	&.visible {
+		opacity: 1;
+		transform: translateY(0);
+		
+	}
+}
+
+

@@ -1,0 +1,130 @@
+/* ----------------------------------------------
+ * init default style
+ * ---------------------------------------------- */
+body {
+	padding-bottom: 0 !important;
+}
+
+html, body {
+	font-size: 17px;
+	zoom: unset !important;
+}
+
+body {
+	overflow-x: clip !important;
+}
+
+body.doz_sys.modal-open {
+	overflow-y: clip;
+	max-height: calc(var(--lvh) * 100);
+	min-height: calc(var(--lvh) * 100);
+}
+
+html.clip {
+	overflow-y: clip;
+	max-height: calc(var(--lvh) * 100);
+	min-height: calc(var(--lvh) * 100);
+}
+
+body.clip {
+	overflow-y: clip;
+	top: var(--current-scroll-y);
+}
+
+body.doz_sys.modal-open {
+	overflow-y: clip;
+	max-height: calc(var(--lvh) * 100);
+	min-height: calc(var(--lvh) * 100);
+}
+
+#doz_footer_wrap {
+	margin-top: 0;
+}
+
+/* ----------------------------------------------
+ * Override form styles
+ * ---------------------------------------------- */
+.form-widget {
+	max-width: var(--max-container-width)!important;
+	padding: var(--default-container-padding)!important;
+	padding-top: var(--fs-title)!important;
+	margin: 0 auto!important;
+	form {
+		display: flex!important;
+		flex-direction: column!important;
+		gap:var(--fs-body)!important;
+		.checkbox-styled {
+			display: flex;
+			height: fit-content!important;
+			line-height: 1!important;
+		}
+		.checkbox-styled input ~ span {
+			display: flex!important;
+			align-items: center!important;
+			padding-left: 0 !important;
+			gap:0.5rem!important;
+			height: fit-content!important;
+			line-height: 1!important;
+		}
+		.checkbox-styled input ~ span::before {
+			top:unset;
+			position: static!important;
+			width: 1.25rem!important;
+			height: 1.25rem!important;
+			border-radius: 50%!important;
+			display: flex!important;
+			align-items: center!important;
+			justify-content: center!important;
+			font-size: 0.6125rem!important;
+		}
+		.form-group {
+			label.control-label {
+				font-size: var(--fs-copyright);
+				font-weight: 750;
+			}
+			.form-control {
+				padding: 1rem;
+				border-radius: 1rem!important;
+				border: 1px solid #bbb;
+			}
+			div.form-control {
+				overflow-x: hidden!important;
+				overflow-y: auto!important;
+				height: calc(var(--lvh) * 30)!important;
+				max-height: fit-content!important;
+			}
+
+			/* 스크롤바 트랙 */
+			div.form-control::-webkit-scrollbar {
+				width: 1rem;
+			}
+
+			/* 스크롤바 슬라이더 */
+			div.form-control::-webkit-scrollbar-thumb {
+				background-color: #999;
+				border: 0.25rem solid transparent;
+				border-radius: 0.5rem !important;
+				background-clip: padding-box !important;
+			}
+
+			input[type=text].form-control,
+			input[type=tel].form-control {
+				border-radius: 0.75rem!important;
+				padding: 0.5rem 0.25rem!important;
+				padding-left: 0.5rem;
+				padding-right: 0.5rem;
+				height: 2.75rem!important;
+			}
+			.phonenumber_wrap {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				font-size: 1rem;
+			}
+			/* 버튼 제거 (사실 최신 브라우저에서는 없어도 적용됨) */
+			div.form-control::-webkit-scrollbar-button {
+				display: none;
+			}
+		}
+	}
+}

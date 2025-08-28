@@ -1,0 +1,61 @@
+<div class="branch-gallary common-container">
+    <div class="content-wrapper">
+        <h2 class="content-title">끝없는 성장, 이곳에서 시작되죠.</h2>
+        <div class="content image-box">
+            <div class="grid-wrapper" id="photo-grid"></div>
+        </div>
+    </div>
+</div>
+<script>
+    /**
+     * 사용방법 안내
+     * { src: "이미지경로", size: "사이즈" }, 형식으로 추가합니다.
+     * images: [ ] 대괄호 안에서 콤마로 구분됩니다.
+     * 사이즈옵션 normal, wide, big, tall
+     */
+    const preLoadimages = {
+        images: [
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_001.jpg", size: "big" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_002.jpg", size: "tall" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_003.jpg", size: "normal" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_004.jpg", size: "normal" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_005.jpg", size: "wide" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_006.jpg", size: "normal" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_007.jpg", size: "big" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_008.jpg", size: "normal" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_009.jpg", size: "wide" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_010.jpg", size: "wide" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_011.jpg", size: "big" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_012.jpg", size: "tall" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_013.jpg", size: "big" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_014.jpg", size: "normal" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_015.jpg", size: "normal" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_016.jpg", size: "wide" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_017.jpg", size: "big" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_018.jpg", size: "wide" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_019.jpg", size: "normal" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_020.jpg", size: "normal" },
+            { src: "https://cdn.statically.io/gh/kklove91/juvocal-images/main/head_office/head_office_021.jpg", size: "big" }
+        ]
+    }
+    
+    function preloadImages(images) {
+        images.forEach(imgObj => {
+            const img = new Image();
+            img.src = imgObj.src;
+        });
+    }
+
+    function renderPhotoGallery(containerId, images) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = images.map(imgObj => `
+            <div class="fade-in ${imgObj.size}">
+                <img src="${imgObj.src}" width="500" loading="eager" alt="" />
+            </div>
+        `).join('');
+    }
+
+    preloadImages(preLoadimages.images);
+    renderPhotoGallery('photo-grid', preLoadimages.images);
+</script>

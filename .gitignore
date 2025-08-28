@@ -1,0 +1,23 @@
+# Build output
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Env files
+.env
+
+# IDE files
+.vscode/
+.idea/
+
+# Media cache
+media/cache/
+
+assets_origin/
+assets_origin/*
